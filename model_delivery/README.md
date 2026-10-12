@@ -1,19 +1,26 @@
-# Boiler model delivery
+# Boiler models V2: repaired OPC package
 
-This folder contains the model package requested in the cloud task.
+Download **boiler_models_v2.zip**. The V1 archive has been superseded.
 
-- Integrated model: lu_xin_rui_with_sh_spray.slx
-- Standalone model: sh_spray_standalone.slx
-- Exact backup of the original uploaded model
-- IF97 property tables, documentation and Simulink construction/validation scripts
+V1 MATLAB error: `No content type was found for part: /_rels/.rels`.
+V2 restores the default XML namespaces used by the original SLX and
+explicitly declares content types for every OPC relationship part.
 
-IMPORTANT: MATLAB/Simulink was unavailable in the cloud environment. The
-SLX files have not been loaded or compiled in MATLAB. Archive, structure
-and independent block-equation checks passed. Parameters are demonstrations,
-not identified plant parameters or approved operating limits.
+Recommended: extract V2 into a NEW folder, select that folder as the MATLAB
+current directory, and run:
 
-Download boiler_models_compatible.zip using GitHub's raw-file download,
-then extract the entire folder. Consult README.md inside the archive.
+```matlab
+start_here
+```
 
-Archive size: 1434133 bytes
-SHA256: edf20e3e2e20e2d3753ef370b0132e897db26bc62cbbd7e6f22f765940505f17
+This uses ordinary MATLAB construction scripts with Simulink add_block,
+add_line and save_system to generate/open the two `_rebuilt.slx` models.
+No MATLAB Function blocks are added. Then run `run_demo(true)` for the
+actual MATLAB/Simulink validation, which was unavailable in the cloud.
+
+The archive also contains the repaired direct SLX files, original backup,
+IF97 tables and documentation. Parameters remain demonstrations, not plant
+identification results or operating limits. See README.md inside the ZIP.
+
+Archive bytes: 1439264
+SHA256: b5da9ce16fd29b402ab67f42f7c4a09503640e0b93d9f5c51a43ce8d64e80e9d
